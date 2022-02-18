@@ -1,5 +1,12 @@
 import time
+from backend.util.crypto_hash import crypto_hash
 
+GENESIS_DATA = {
+    'timestamp': 1,
+    'last_hash': 'genesis_last_hash',
+    'hash': 'genesis_hash',
+    'data': []
+}
 
 class Block:
     """
@@ -29,7 +36,7 @@ class Block:
         """
         timestamp = time.time_ns()
         last_hash = last_block.hash
-        hash = f'{timestamp}-{last_hash}'
+        hash = crypto_hash(timestamp, last_hash, data)
         return Block(timestamp, last_hash, hash, data)
 
     @staticmethod
@@ -37,7 +44,7 @@ class Block:
         """
         Generate the genesis block.
         """
-        return Block(1, 'genesis_last_hash', 'genesis_hash', [])
+        return Block(**GENESIS_DATA)
 
 
 def main():
