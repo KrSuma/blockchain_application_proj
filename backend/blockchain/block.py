@@ -72,7 +72,7 @@ class Block:
         Decrease the difficulty for slowly mined blocks.
         """
         if (new_timestamp - last_block.timestamp) < MINE_RATE:
-            return last_block.diffculty + 1
+            return last_block.difficulty + 1
 
         if (last_block.difficulty - 1) > 0:
             return last_block.difficulty - 1
