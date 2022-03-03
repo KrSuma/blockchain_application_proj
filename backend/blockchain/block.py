@@ -49,6 +49,7 @@ class Block:
         nonce = 0
         hash = crypto_hash(timestamp, last_hash, data, difficulty, nonce)
 
+        # continue looking for a new hash until our proof of work requirement is met.
         while hash[0:difficulty] != '0' * difficulty:
             nonce += 1
             timestamp = time.time_ns()

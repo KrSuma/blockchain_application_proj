@@ -22,7 +22,7 @@ def hex_to_binary(hex_string):
     binary_string = ''
 
     for character in hex_string:
-        binary_string += HEX_TO_BINARY_CONVERSION_TABLE[character]\
+        binary_string += HEX_TO_BINARY_CONVERSION_TABLE[character]
 
     return binary_string
 
